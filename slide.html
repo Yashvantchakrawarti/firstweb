@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;        
+    }
+
+    main{
+        width: 60%;
+        height: 300px;
+        margin: auto;
+        margin-top: 100px;
+        box-shadow: 0px 0px 3px grey;
+        position:  relative;
+        overflow: hidden;
+    }
+
+    .slide{
+        height:100% ;
+        width: 100% ;
+        border: 2px solid black;
+        transition: 1s ;
+        position:  absolute ;
+        }
+
+    .nav{
+        text-align: center;
+        margin-top: 15px;
+        }
+    .nav  button{
+        font-size: 25px;
+        padding: 5px;
+    }        
+
+    
+</style>
+
+<body>
+    <h1>image slider</h1>
+    <main>
+
+        <img src="image1.jpg" class="slide" alt="" >
+        <img src="image2.jpg" class="slide" alt="" >
+        <img src="image3.jpg" class="slide" alt="" >
+        <img src="image4.jpg" class="slide" alt="" >
+    </main>
+    <div class="nav">
+        <button onclick="goPrev()">Prev</button>
+        <button  onclick="goNext()">Next</button>
+    </div>
+
+
+    <script>
+
+        const slides = document.querySelectorAll(".slide")
+        let counter = 0 ;
+       slides.forEach(
+                  (slide,index)=>{
+                      slide.style.left = `${index * 100}% `        
+                  }
+       )
+
+
+       const goPrev =  ()=>{
+        counter--
+        slideImage()
+       }
+
+       const goNext=()=>{
+        counter++
+        slideImage()
+       }
+
+     
+
+       const slideImage = ()=>{
+        slides.forEach(
+            (slide)=>{
+                  slide.style.transform=`translateX(-${counter * 100}%)`
+            }
+        )}
+    </script>
+</body>
+
+</html>
